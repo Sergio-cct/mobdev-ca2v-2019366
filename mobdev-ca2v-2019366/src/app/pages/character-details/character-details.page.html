@@ -1,9 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>characterDetails</ion-title>
-  </ion-toolbar>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+			<ion-back-button defaulthref="/tabs/characters"></ion-back-button>
+		</ion-buttons>
+		<ion-title>Characters Details</ion-title>
+	</ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
+	<ion-card *ngIf="character">
+		<ion-card-content>
+			<h4><strong>{{ character.name }} </strong></h4>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="character">
+		<ion-card-content>
+			<h3><strong>Occupation: {{ character.occupation }} </strong></h3>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="character">
+		<ion-card-content>
+			<h3><strong>Brasking bad season: {{ character.appearance }} </strong></h3>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="character">		
+		<ion-card-content>
+			<h3><strong>Status: {{ character.status }} </strong></h3>
+		</ion-card-content>
+	</ion-card>
 
 </ion-content>

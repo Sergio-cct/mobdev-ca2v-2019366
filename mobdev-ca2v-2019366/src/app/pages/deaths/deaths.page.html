@@ -1,9 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>deaths</ion-title>
-  </ion-toolbar>
+	<ion-toolbar color="primary">
+		<ion-title>Deaths</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
+	<ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+
+	<ion-card *ngIf="death">
+		<ion-card-content>
+			<h3><strong>Death Count: {{ death-count }} </strong></h3>
+		</ion-card-content>
+	</ion-card>
 
 </ion-content>
