@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-	<ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+	<ion-searchbar [(ngModel)]="terms" (ionChange)="search($event)"></ion-searchbar>
 
   <ion-list>
     <ion-item button detail lines="inset" 
