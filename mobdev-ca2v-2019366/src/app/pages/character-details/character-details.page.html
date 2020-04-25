@@ -3,34 +3,58 @@
 		<ion-buttons slot="start">
 			<ion-back-button defaulthref="/tabs/characters"></ion-back-button>
 		</ion-buttons>
-		<ion-title>Characters Details</ion-title>
+		<ion-title>{{ character?.name }}</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="noStatusCharacter()" *ngIf="isLiked">
+				<ion-icon name="thumbs-up-sharp" slot="icon-only"></ion-icon>
+			</ion-button>
+			<ion-button (click)="likeCharacter()" *ngIf="!isLiked">
+				<ion-icon name="thumbs-up-outline" slot="icon-only"></ion-icon>
+			</ion-button>
+			<ion-button (click)="noStatusCharacter()" *ngIf="isDisliked">
+				<ion-icon name="thumbs-down-sharp" slot="icon-only"></ion-icon>
+			</ion-button>
+			<ion-button (click)="dislikeCharacter()" *ngIf="!isDisliked">
+				<ion-icon name="thumbs-down-outline" slot="icon-only"></ion-icon>
+			</ion-button>
+		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-	<ion-card *ngIf="character">
-		<ion-card-content>
-			<h4><strong>{{ character.name }} </strong></h4>
-		</ion-card-content>
-	</ion-card>
+	<ion-card *ngIf="character" class="film-card">
 
-	<ion-card *ngIf="character">
-		<ion-card-content>
-			<h3><strong>Occupation: {{ character.occupation }} </strong></h3>
-		</ion-card-content>
-	</ion-card>
 
-	<ion-card *ngIf="character">
-		<ion-card-content>
-			<h3><strong>Brasking bad season: {{ character.appearance }} </strong></h3>
-		</ion-card-content>
-	</ion-card>
+		<ion-img style="align-items: center width: 250px; height: 250px;" src="{{character.img}}"></ion-img>
 
-	<ion-card *ngIf="character">		
-		<ion-card-content>
-			<h3><strong>Status: {{ character.status }} </strong></h3>
-		</ion-card-content>
+		<ion-item class="film-info" lines="none">
+			<ion-icon name="person-outline" slot="start"></ion-icon>
+			Name: {{ character.name }}
+		</ion-item>
+
+
+		<ion-item class="film-info" lines="none">
+			<ion-icon name="briefcase-outline" slot="start"></ion-icon>
+			Occupation: {{ character.occupation }}
+		</ion-item>
+
+		<ion-item class="film-info" lines="none">
+			<ion-icon name="pulse-outline" slot="start"></ion-icon>
+			Status: {{ character.status }}
+		</ion-item>
+
+		<ion-item class="film-info" lines="none">
+			<ion-icon name="film-outline" slot="start"></ion-icon>
+			Appearances in Season: {{ character.appearance }}
+		</ion-item>
+
+
+		<ion-item class="film-info" lines="none">
+			<ion-icon name="videocam-outline" slot="start"></ion-icon>
+			Series: {{ character.category }}
+		</ion-item>
+
 	</ion-card>
 
 </ion-content>
