@@ -11,6 +11,7 @@
     <ion-item button detail lines="inset" 
     *ngFor="let quote of quotes | async" 
     (click)="openDetails(quote)">
+    <ion-icon name="megaphone-outline" slot="start"></ion-icon>
       {{ quote.quote }}
     </ion-item>
   </ion-list>

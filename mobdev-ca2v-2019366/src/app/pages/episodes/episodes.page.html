@@ -9,7 +9,8 @@
 
 	<ion-list>
 		<ion-item button detail lines="inset" *ngFor="let episode of episodes | async" (click)="openDetails(episode)">
-			{{ episode.title }}
+			<ion-icon name="film-outline" slot="start"></ion-icon>
+            {{ episode.title }}
 		</ion-item>
 	</ion-list>
 
