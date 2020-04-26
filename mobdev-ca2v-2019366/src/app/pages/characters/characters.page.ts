@@ -4,25 +4,50 @@ import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
 @Component({
-  selector: 'app-characters',
-  templateUrl: './characters.page.html',
-  styleUrls: ['./characters.page.scss'],
+    selector: 'app-characters',
+    templateUrl: './characters.page.html',
+    styleUrls: ['./characters.page.scss'],
 })
 export class CharactersPage implements OnInit {
 
-    characters: Observable<any>;
+    characters = [];
+    offset = 0;
+    numCharacters = 63;
 
     constructor(private router: Router, private api: ApiService) { }
 
     ngOnInit() {
-        this.characters = this.api.getCharacters();
-        this.characters.subscribe(data => {
-        console.log('my data', data);
-        });
+
+        this.loadCharacters();
     }
 
+    openMore(event?) {
+
+        this.offset = this.offset + 20;
+        this.loadCharacters(event);
+
+        if (this.offset > this.numCharacters) {
+            event.target.disabled = true;
+        }
+    }
+
+    loadCharacters(event?) {
+
+        this.api.getCharacters(this.offset).subscribe(data => {
+
+            console.log(data);
+            this.characters = this.characters.concat(data);
+
+            if (event) {
+                event.target.complete();
+            }
+        })
+    }
+
+
+
     openDetails(character) {
-        let characterId = character.char_id;        
+        let characterId = character.char_id;
         this.router.navigateByUrl(`/tabs/characters/${characterId}`);
     }
 }
