@@ -6,8 +6,6 @@
 
 <ion-content padding>
 
-	
-
 	<ion-list>
 		<ion-item button detail lines="inset" *ngFor="let character of characters | async"
 			(click)="openDetails(character)">
@@ -20,4 +18,10 @@
 
 	</ion-list>
 
+    <ion-infinite-scroll threshold="20%" id="infinite-scroll" (ionInfinite)="loadMore($event)">
+		<ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
 </ion-content>
+
