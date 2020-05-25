@@ -1,0 +1,13 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "mobdev-ca2v-2019366",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
